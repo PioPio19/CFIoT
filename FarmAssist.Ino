@@ -69,25 +69,37 @@ void messageHandler(char* topic, byte* payload, unsigned int length)
  
   for (int i = 0; i < length; i++) 
   {
-    Serial.print((char)payload[i]); // Pring payload content
+    Serial.print((char)payload[i]); // Print payload content
   }
-    char led = (char)payload[62]; // Extracting the controlling command from the Payload to Controlling LED from AWS
+    char addr = (char)payload[62]; // read the led address
+    Serial.print("Address: ");
+    Serial.println(addr);
+    char led = (char)payload[64]; // Eread the following command (1 for turn on 0 for turn off)
     Serial.print("Command: ");
     Serial.println(led);
  
-  if (led == 49) // 49 is the ASCI value of 1
+  if ((led == 49) && (addr == 97)) // 49 is the ASCI value of 1
   {
     digitalWrite(lamp, HIGH);
-    Serial.println("Lamp_State changed to HIGH");
+    Serial.println("Lamp_A changed to HIGH");
   }
-  else if (led == 48) // 48 is the ASCI value of 0
+  else if ((led == 48) && (addr == 97)) // 48 is the ASCI value of 0
   {
     digitalWrite(lamp, LOW);
-    Serial.println("Lamp_State changed to LOW");
+    Serial.println("Lamp_A changed to LOW");
+  }
+  if ((led == 49) && (addr == 98)) // 49 is the ASCI value of 1
+  {
+    digitalWrite(lamp, HIGH);
+    Serial.println("Lamp_B changed to HIGH");
+  }
+  else if ((led == 48) && (addr == 98)) // 48 is the ASCI value of 0
+  {
+    digitalWrite(lamp, LOW);
+    Serial.println("Lamp_B changed to LOW");
   }
   Serial.println();
 }
- 
  
 void setup()
 {
