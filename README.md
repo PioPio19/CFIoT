@@ -1,39 +1,27 @@
 #Read and follow the instruction bellow
+## This section is the basic step for EC2 configuration
+1. First of all make an account for AWS.
+2. Create an Instance in EC2.
+3. Creat elastic IP, and then associate the elastic IP to a specific EC2 Instance.
+4. Open the EC2 Instance, and install XAMPP inside that Instance.
+5. Setting the firewall, so the network can be accessed from outside the network.
 
-1. First of all please setting up Amazon AWS IoT Core Dashboard. 
-2. Provide some related data like policy, and things.
-3. Download the related data included certificate, private key, and public key.<
-4. Download FarmAssist.Ino and Secrets.h, and save it into one folder.
-5. Open the Secrets.h, copy the AmazonRootCA1 data, Device Sertificate, and Private key.
+## This section is for the Arduino configuration
+### You can find this code inside CFIoT Folder 
+1. Make sure to change this code:
 ```
-// Amazon Root CA 1
-static const char AWS_CERT_CA[] PROGMEM = R"EOF(
------BEGIN CERTIFICATE-----
------END CERTIFICATE-----
-)EOF";
-```
-
-```
-// Device Certificate                                               //change this
-static const char AWS_CERT_CRT[] PROGMEM = R"KEY(
------BEGIN CERTIFICATE-----
------END CERTIFICATE-----
-)KEY";
-```
-
-```
-// Device Private Key                                               //change this
-static const char AWS_CERT_PRIVATE[] PROGMEM = R"KEY(
------BEGIN CERTIFICATE-----
------END CERTIFICATE-----
-)KEY";
-```
-6. Don't forget to edit this line of code:
-```
-    #define THINGNAME "*********"                         //change this
- 
-    const char WIFI_SSID[] = "***********";               //change this
-    const char WIFI_PASSWORD[] = "***********";           //change this
-    const char AWS_IOT_ENDPOINT[] = "************";       //change this
+    // Replace with your network credentials (STATION)
+    const char* ssid = "WIFI_ID";
+    const char* password = "WIFI_PASSWORD";
+    
  ```   
-7. Save, compile and upload.
+2. REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS.
+```
+    http.begin("http://REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS/REPLACE_WITH_PROJECT_FOLDER_NAME_IN_htdocs_FOLDER/getdata.php");  //--> Specify request destination
+```
+4. But make sure that the IP address used is "IPv4 address".
+5. Example : http.begin("http://192.168.0.0/ESP32_MySQL_Database/Final/getdata.php");
+6. Do a similar step to step number two.
+```
+    http.begin("http://REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS/REPLACE_WITH_PROJECT_FOLDER_NAME_IN_htdocs_FOLDER/updateDHT11data_and_recordtable.php");  //--> Specify request destination
+```
