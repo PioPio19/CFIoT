@@ -15,7 +15,7 @@
     const char* password = "WIFI_PASSWORD";
     
  ```   
-2. REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS.
+2. REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS. (EC2 Elastic IP).
 ```
     http.begin("http://REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS/REPLACE_WITH_PROJECT_FOLDER_NAME_IN_htdocs_FOLDER/getdata.php");  //--> Specify request destination
 ```
@@ -25,3 +25,10 @@
 ```
     http.begin("http://REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS/REPLACE_WITH_PROJECT_FOLDER_NAME_IN_htdocs_FOLDER/updateDHT11data_and_recordtable.php");  //--> Specify request destination
 ```
+
+## This section is for the XAMPP Dashboard configuration
+### You can find this code inside Dashboard Folder 
+1. Go to ~\xampp\htdocs on your EC2 Instance.
+2. Rename the folder "Dashboard" with another name.
+3. Copy and paste the new "Dashboard" Folder to ~\xampp\htdocs.
+4. Use this link to open your ESP Farm Assist monitoring system: http://EC2_Elastic_IP/Dashboard/final/home.php
