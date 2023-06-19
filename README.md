@@ -32,3 +32,4 @@
 2. Rename the folder "Dashboard" with another name.
 3. Copy and paste the new "Dashboard" Folder to ~\xampp\htdocs.
 4. Use this link to open your ESP Farm Assist monitoring system: http://EC2_Elastic_IP/Dashboard/final/home.php
+5. Example : http.begin("http://192.168.0.0/Dashboard/final/home.php");
